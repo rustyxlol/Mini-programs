@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+#include<string>
+using namespace std;
+int main()
+{
+    int n=2284822;
+    string number = to_string(n);
+
+    for(int i = 0 ; i < number.length() ; i++)
+    {
+        std::string tmp = number;
+        tmp.erase(i, 1);
+        std::string another = tmp;
+
+        reverse(another.begin(),another.end());
+
+        if(tmp == another){
+            cout<<"Palindrome"<<endl;
+            cout<<"Removed: "<<number[i];
+            return 0;
+        }
+    }
+    cout<<"Palindrome cannot be made"<<endl;
+    return 0;
+}
