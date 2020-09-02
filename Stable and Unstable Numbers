@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+#include<string>
+using namespace std;
+int main()
+{
+    vector<uint64_t>allnums = {12,245,6767,223};
+    vector<uint64_t> original = allnums;
+    int totalsum=0;
+    int sumStable=0;
+    int sumUnstable=0;
+    for(int i=0;i<allnums.size();i++)
+    {
+        int cStable=0;
+        int cUnstable=0;
+
+        int count_[10] = {0};
+        while(allnums[i] > 0)
+        {
+            count_[allnums[i]%10]++;
+            allnums[i] = allnums[i]/10;
+        }
+        int k=0;
+
+        while(count_[k] == 0) k++;
+        for(int j=0;j<10;j++){
+                if(count_[j] != 0)
+            if(count_[j] != 0 && count_[k] != count_[j]){
+                sumUnstable += original[i];
+                sumStable -= original[i];
+            }
+        }
+        sumStable+=original[i];
+
+    }
+    cout<<sumStable-sumUnstable<<endl;
+}
